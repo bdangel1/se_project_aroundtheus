@@ -35,8 +35,7 @@
   max-width: 246px;
   display: flex;
   justify-content: space-between;
-  gap: 25px;
-  margin: auto;
+  margin: 25px auto 31px;
 }
 @media screen and (max-width: 960px) {
   .elements {
