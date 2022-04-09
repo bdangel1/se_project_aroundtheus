@@ -14,6 +14,39 @@
       <header class="header">
         <img src="./images/Vector.svg" alt="icon" class="header__icon" />
       </header>
+      <div class="modal">
+        <div class="modal__content">
+          <button type="button" class="modal__button">
+            <img
+              src="./images/Close-Icon.svg"
+              alt="close icon"
+              class="modal__close"
+            />
+          </button>
+          <div class="edit">
+            <form name="edit__profile form">
+              <h2 class="edit__profile-title">Edit Profile</h2>
+              <fieldset class="form__fieldset">
+                <input
+                  type="text"
+                  class="form__input form__input_type_name"
+                  placeholder="Name"
+                />
+              </fieldset>
+              <fieldset class="form__fieldset">
+                <input
+                  type="text"
+                  class="form__input form__input_type_job"
+                  placeholder="About me"
+                />
+              </fieldset>
+              <fieldset class="form__fieldset">
+                <button type="submit" class="form__button">Save</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
       <section class="profile">
         <div class="profile__avatar">
           <img
@@ -24,7 +57,7 @@
         </div>
         <div class="profile__info">
           <h2 class="profile__info-name">Jacques Cousteau</h2>
-          <button class="profile__button-edit">
+          <button type="button" class="profile__button-edit">
             <img
               src="./images/edit.svg"
               alt="edit button"
@@ -33,7 +66,7 @@
           </button>
           <p class="profile__info-job">Explorer</p>
         </div>
-        <button class="profile__button-add">
+        <button type="button" class="profile__button-add">
           <img
             src="./images/add.svg"
             alt="add button"
@@ -50,12 +83,13 @@
               class="elements__image"
             />
             <p class="element__paragraph">
-              Yosemite Valley
-              <img
-                src="./images/heart.svg"
-                alt="like icon"
-                class="element__like"
-              />
+              Yosemite Valley<button type="button" class="element__button">
+                <img
+                  src="./images/heart.svg"
+                  alt="like icon"
+                  class="element__like"
+                />
+              </button>
             </p>
           </li>
           <li class="element">
@@ -65,11 +99,13 @@
               class="elements__image"
             />
             <p class="element__paragraph">
-              Lake Louise<img
-                src="./images/heart.svg"
-                alt="like icon"
-                class="element__like"
-              />
+              Lake Louise<button type="button" class="element__button">
+                <img
+                  src="./images/heart.svg"
+                  alt="like icon"
+                  class="element__like"
+                />
+              </button>
             </p>
           </li>
           <li class="element">
@@ -79,11 +115,13 @@
               class="elements__image"
             />
             <p class="element__paragraph">
-              Bald Mountains<img
-                src="./images/heart.svg"
-                alt="like icon"
-                class="element__like"
-              />
+              Bald Mountains<button type="button" class="element__button">
+                <img
+                  src="./images/heart.svg"
+                  alt="like icon"
+                  class="element__like"
+                />
+              </button>
             </p>
           </li>
           <li class="element">
@@ -93,11 +131,13 @@
               class="elements__image"
             />
             <p class="element__paragraph">
-              Latemar<img
-                src="./images/heart.svg"
-                alt="like icon"
-                class="element__like"
-              />
+              Latemar<button type="button" class="element__button">
+                <img
+                  src="./images/heart.svg"
+                  alt="like icon"
+                  class="element__like"
+                />
+              </button>
             </p>
           </li>
           <li class="element">
@@ -107,11 +147,13 @@
               class="elements__image"
             />
             <p class="element__paragraph">
-              Vanoise Nationa...<img
-                src="./images/heart.svg"
-                alt="like icon"
-                class="element__like"
-              />
+              Vanoise Nationa...<button type="button" class="element__button">
+                <img
+                  src="./images/heart.svg"
+                  alt="like icon"
+                  class="element__like"
+                />
+              </button>
             </p>
           </li>
           <li class="element">
@@ -122,11 +164,13 @@
             />
             <p class="element__paragraph" lang="es">
               Lago di Braies
-              <img
-                src="./images/heart.svg"
-                alt="like icon"
-                class="element__like"
-              />
+              <button type="button" class="element__button">
+                <img
+                  src="./images/heart.svg"
+                  alt="like icon"
+                  class="element__like"
+                />
+              </button>
             </p>
           </li>
         </ul>
@@ -135,5 +179,6 @@
         <p class="footer__copyright">© 2021 Around The U.S.</p>
       </footer>
     </div>
+    <script src="./index.js"></script>
   </body>
 </html>
