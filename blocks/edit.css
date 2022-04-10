@@ -1,22 +1,20 @@
 .edit {
-  background-color: #ffffff;
   display: block;
   margin: auto;
   border-radius: 10px;
   max-width: 100%;
 }
-.edit__profile {
-  max-width: 358px;
+.edit__form {
   margin: auto;
-  border: 1px solid red;
+  max-width: 358px;
 }
 
-.edit__profile-title {
+.edit__title {
   font-size: 24px;
   line-height: 29.05px;
   color: #000000;
   max-width: 330px;
-  margin-left: 14px;
+  margin-left: 36px;
   margin-right: 64px;
   margin-bottom: 0;
 }
@@ -25,10 +23,10 @@
   .edit__profile {
     max-width: 100%;
   }
-  .edit__profile-title {
+  .edit__title {
     font-size: 18px;
     line-height: 21.78px;
-    max-width: 238px;
-    margin-top: 25px;
+    max-width: 282px;
+    margin: 25px 22px 0;
   }
 }
