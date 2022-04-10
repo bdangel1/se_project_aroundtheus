@@ -13,8 +13,7 @@ function openModal() {
 function closeModal() {
   modal.classList.remove("modal_open");
 }
-closeEditModalButton.addEventListener("click", closeModal);
-closeModal();
+
 openEditModalButton.addEventListener("click", function () {
   openModal();
   inputName.value = profileName.textContent;
@@ -22,7 +21,8 @@ openEditModalButton.addEventListener("click", function () {
 });
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-  profileName.textContent = inputNameValue;
-  profileJob.textContent = inputJobValue;
+  profileName.textContent = inputName.value;
+  profileJob.textContent = inputJob.value;
   closeModal();
 });
+closeEditModalButton.addEventListener("click", closeModal);

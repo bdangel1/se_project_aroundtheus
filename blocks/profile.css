@@ -26,17 +26,21 @@
   margin-bottom: 21px;
   margin-left: 30px;
   margin-right: 165px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .profile__info-name {
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
   margin: 0;
+  max-width: 373px;
 }
 .profile__button-edit {
   display: block;
-  height: max-content;
-  width: min-content;
+  max-height: 24px;
+  max-width: 24px;
   border: 1px solid #ffffff;
   background-color: black;
   margin-top: 15px;
@@ -52,6 +56,7 @@
 
 .profile__info-job {
   margin: 0;
+  max-width: 415px;
 }
 .profile__button-add {
   display: block;
@@ -108,12 +113,22 @@
     justify-content: center;
     gap: 14px 15.25px;
   }
+  .profile__info-name {
+    max-width: 196px;
+  }
+  .profile__info-job {
+    max-width: 282px;
+  }
   .profile__button-edit {
     margin-top: 4px;
+    max-height: 18px;
+    max-width: 18px;
   }
   .profile__button-edit-icon {
-    width: 7.5px;
-    height: 7.5px;
+    max-width: 7.5px;
+    max-height: 7.5px;
+    margin: auto;
+    padding-bottom: 5.25px;
   }
   .profile__info-name {
     font-size: 22px;
