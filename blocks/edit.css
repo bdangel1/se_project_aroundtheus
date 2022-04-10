@@ -3,7 +3,12 @@
   display: block;
   margin: auto;
   border-radius: 10px;
-  max-width: 430px;
+  max-width: 100%;
+}
+.edit__profile {
+  max-width: 358px;
+  margin: auto;
+  border: 1px solid red;
 }
 
 .edit__profile-title {
@@ -14,7 +19,6 @@
   margin-left: 14px;
   margin-right: 64px;
   margin-bottom: 0;
-  padding-top: 34px;
 }
 
 @media screen and (max-width: 600px) {
