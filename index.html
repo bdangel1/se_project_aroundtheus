@@ -25,156 +25,160 @@
           </button>
           <div class="edit">
             <h2 class="edit__title">Edit Profile</h2>
-            <form class="edit__form form">
+            <form name="edit-profile" class="edit__form form">
               <fieldset class="form__fieldset">
                 <input
                   type="text"
                   class="form__input form__input_type_name"
                   placeholder="Name"
                 />
-              </fieldset>
-              <fieldset class="form__fieldset">
                 <input
                   type="text"
                   class="form__input form__input_type_job"
                   placeholder="About me"
                 />
-              </fieldset>
-              <fieldset class="form__fieldset">
                 <button type="submit" class="form__button">Save</button>
               </fieldset>
             </form>
           </div>
         </div>
       </div>
-      <section class="profile">
-        <div class="profile__avatar">
-          <img
-            src="./images/profile.jpg"
-            alt="profile pic"
-            class="profile__image"
-          />
-        </div>
-        <div class="profile__info">
-          <h2 class="profile__info-name">Jacques Cousteau</h2>
-          <button type="button" class="profile__button-edit">
+      <main>
+        <section class="profile">
+          <div class="profile__avatar">
             <img
-              src="./images/edit.svg"
-              alt="edit button"
-              class="profile__button-edit-icon"
+              src="./images/profile.jpg"
+              alt="profile pic"
+              class="profile__image"
+            />
+
+            <div class="profile__info">
+              <div class="profile__name">
+                <h1 class="profile__name-info">Jacques Cousteau</h1>
+                <img
+                  src="./images/edit.svg"
+                  alt="edit button"
+                  class="profile__name-button"
+                />
+              </div>
+              <p class="profile__info-job">Explorer</p>
+            </div>
+          </div>
+          <button type="button" class="profile__button-add">
+            <img
+              src="./images/add.svg"
+              alt="add button"
+              class="profile__button-add-icon"
             />
           </button>
-          <p class="profile__info-job">Explorer</p>
-        </div>
-        <button type="button" class="profile__button-add">
-          <img
-            src="./images/add.svg"
-            alt="add button"
-            class="profile__button-add-icon"
-          />
-        </button>
-      </section>
-      <section class="elements">
-        <ul class="elements__list">
-          <li class="element">
-            <img
-              src="./images/kirill-pershin-yosmite.png"
-              alt="valley pic"
-              class="elements__image"
-            />
-            <p class="element__paragraph">
-              Yosemite Valley<button type="button" class="element__button">
-                <img
-                  src="./images/heart.svg"
-                  alt="like icon"
-                  class="element__like"
-                />
-              </button>
-            </p>
-          </li>
-          <li class="element">
-            <img
-              src="./images/kirill-pershin-LakeLouise.png"
-              alt="lake pic"
-              class="elements__image"
-            />
-            <p class="element__paragraph">
-              Lake Louise<button type="button" class="element__button">
-                <img
-                  src="./images/heart.svg"
-                  alt="like icon"
-                  class="element__like"
-                />
-              </button>
-            </p>
-          </li>
-          <li class="element">
-            <img
-              src="./images/kirill-pershin-baldMountains.png"
-              alt="mountain pic"
-              class="elements__image"
-            />
-            <p class="element__paragraph">
-              Bald Mountains<button type="button" class="element__button">
-                <img
-                  src="./images/heart.svg"
-                  alt="like icon"
-                  class="element__like"
-                />
-              </button>
-            </p>
-          </li>
-          <li class="element">
-            <img
-              src="./images/kirill-pershin-Latemer.png"
-              alt="dark mountain pic"
-              class="elements__image"
-            />
-            <p class="element__paragraph">
-              Latemar<button type="button" class="element__button">
-                <img
-                  src="./images/heart.svg"
-                  alt="like icon"
-                  class="element__like"
-                />
-              </button>
-            </p>
-          </li>
-          <li class="element">
-            <img
-              src="./images/kirill-pershin-venoise.png"
-              alt="mountain river pic"
-              class="elements__image"
-            />
-            <p class="element__paragraph">
-              Vanoise Nationa...<button type="button" class="element__button">
-                <img
-                  src="./images/heart.svg"
-                  alt="like icon"
-                  class="element__like"
-                />
-              </button>
-            </p>
-          </li>
-          <li class="element">
-            <img
-              src="./images/kirill-pershin-Lago.png"
-              alt="lago pic"
-              class="elements__image"
-            />
-            <p class="element__paragraph" lang="es">
-              Lago di Braies
-              <button type="button" class="element__button">
-                <img
-                  src="./images/heart.svg"
-                  alt="like icon"
-                  class="element__like"
-                />
-              </button>
-            </p>
-          </li>
-        </ul>
-      </section>
+        </section>
+        <section class="elements">
+          <ul class="elements__list">
+            <li class="element">
+              <img
+                src="./images/kirill-pershin-yosmite.png"
+                alt="valley pic"
+                class="element__image"
+              />
+              <div class="element__paragraph">
+                <h2 class="element__paragraph-title">Yosemite Valley</h2>
+                <button type="button" class="element__button">
+                  <img
+                    src="./images/heart.svg"
+                    alt="like icon"
+                    class="element__like"
+                  />
+                </button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                src="./images/kirill-pershin-LakeLouise.png"
+                alt="lake pic"
+                class="element__image"
+              />
+              <div class="element__paragraph">
+                <h2 class="element__paragraph-title">Lake Louise</h2>
+                <button type="button" class="element__button">
+                  <img
+                    src="./images/heart.svg"
+                    alt="like icon"
+                    class="element__like"
+                  />
+                </button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                src="./images/kirill-pershin-baldMountains.png"
+                alt="mountain pic"
+                class="element__image"
+              />
+              <div class="element__paragraph">
+                <h2 class="element__paragraph-title">Bald Mountains</h2>
+                <button type="button" class="element__button">
+                  <img
+                    src="./images/heart.svg"
+                    alt="like icon"
+                    class="element__like"
+                  />
+                </button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                src="./images/kirill-pershin-Latemer.png"
+                alt="dark mountain pic"
+                class="element__image"
+              />
+              <div class="element__paragraph">
+                <h2 class="element__paragraph-title">Latemar</h2>
+                <button type="button" class="element__button">
+                  <img
+                    src="./images/heart.svg"
+                    alt="like icon"
+                    class="element__like"
+                  />
+                </button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                src="./images/kirill-pershin-venoise.png"
+                alt="mountain river pic"
+                class="element__image"
+              />
+              <div class="element__paragraph">
+                <h2 class="element__paragraph-title">Vanoise National Park</h2>
+                <button type="button" class="element__button">
+                  <img
+                    src="./images/heart.svg"
+                    alt="like icon"
+                    class="element__like"
+                  />
+                </button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                src="./images/kirill-pershin-Lago.png"
+                alt="lago pic"
+                class="element__image"
+              />
+              <div class="element__paragraph" lang="es">
+                <h2 class="element__paragraph-title">Lago di Braies</h2>
+                <button type="button" class="element__button">
+                  <img
+                    src="./images/heart.svg"
+                    alt="like icon"
+                    class="element__like"
+                  />
+                </button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
       <footer class="footer">
         <p class="footer__copyright">© 2021 Around The U.S.</p>
       </footer>

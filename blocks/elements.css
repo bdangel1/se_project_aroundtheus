@@ -12,49 +12,19 @@
   grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
   max-width: 100%;
 }
-.element {
-  background-color: #ffffff;
-  color: black;
-  max-width: 282px;
-  display: block;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  margin: auto;
-  border-radius: 4%;
+@media screen and (max-width: 960px) {
+  .elements {
+    max-width: 100%;
+  }
+  .elements__list {
+    grid-template-columns: repeat(auto-fit, minmax(363px, 1fr));
+  }
 }
-.elements__image {
-  max-width: 100%;
-  margin: auto;
-}
-
-.element__paragraph {
-  font-size: 24px;
-  line-height: 29.05px;
-  font-weight: 900;
-  max-width: 246px;
-  display: flex;
-  justify-content: space-between;
-  margin: 25px auto 31px;
-}
-.element__button {
-  background-color: white;
-  border: none;
-  width: max-content;
-  height: max-content;
-}
-.element__like {
-  display: block;
-}
-.element__like:hover {
-  opacity: 50%;
-}
-
 @media screen and (max-width: 600px) {
   .elements__list {
     grid-template-columns: 1fr;
     gap: 20px;
     align-content: center;
-    max-width: 282px;
+    max-width: 320px;
   }
 }

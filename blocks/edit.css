@@ -17,12 +17,10 @@
   margin-left: 36px;
   margin-right: 64px;
   margin-bottom: 0;
+  margin-top: 34px;
 }
 
 @media screen and (max-width: 600px) {
-  .edit__profile {
-    max-width: 100%;
-  }
   .edit__title {
     font-size: 18px;
     line-height: 21.78px;

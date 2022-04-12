@@ -1,9 +1,9 @@
-const openEditModalButton = document.querySelector(".profile__button-edit");
+const openEditModalButton = document.querySelector(".profile__name-button");
 const modal = document.querySelector(".modal");
 const closeEditModalButton = document.querySelector(".modal__button");
 const inputName = document.querySelector(".form__input_type_name");
 const inputJob = document.querySelector(".form__input_type_job");
-const profileName = document.querySelector(".profile__info-name");
+const profileName = document.querySelector(".profile__name-info");
 const profileJob = document.querySelector(".profile__info-job");
 const form = document.querySelector(".form");
 
