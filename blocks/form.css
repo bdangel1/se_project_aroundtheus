@@ -47,13 +47,14 @@
 }
 @media screen and (max-width: 600px) {
   .form__fieldset {
-    max-width: 282px;
+    width: 238px;
     margin-top: 76px;
     gap: 30px;
   }
   .form__input {
     padding-bottom: 9px;
     margin: auto;
+    width: 100%;
   }
   .form__button {
     padding: 14px 100px;

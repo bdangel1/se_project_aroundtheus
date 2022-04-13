@@ -36,6 +36,7 @@
   width: min-content;
   height: min-content;
   align-self: flex-end;
+  cursor: pointer;
 }
 .element__like {
   display: block;
@@ -62,9 +63,5 @@
   }
   .element__paragraph {
     max-width: 246px;
-  }
-  .element__paragraph-title {
-    font-size: 24px;
-    line-height: 29.05px;
   }
 }
