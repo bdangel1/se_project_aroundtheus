@@ -7,9 +7,11 @@ const previewModal = document.querySelector(".popup_type_preview");
 const openEditModalButton = document.querySelector(".profile__name-button");
 const openAddCardModalButton = document.querySelector(".profile__button-add");
 const openPreviewModalButton = document.querySelector(".card__image");
-const closeEditModalButton = document.querySelector(".popup_close_profile");
-const closeaddCardModalButton = document.querySelector(".popup_close_add-card");
-const closePreviewModalButton = document.querySelector(".popup_close_preview");
+const closeEditModalButton = document.querySelector(". popup__close_profile");
+const closeaddCardModalButton = document.querySelector(
+  ".popup__close_add-card"
+);
+const closePreviewModalButton = document.querySelector(".popup__close_preview");
 const profileName = document.querySelector(".profile__name-info");
 const profileJob = document.querySelector(".profile__info-job");
 const addCardName = document.querySelector(".card__title");
