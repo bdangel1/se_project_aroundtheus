@@ -14,31 +14,6 @@
       <header class="header">
         <img src="./images/Vector.svg" alt="icon" class="header__icon" />
       </header>
-      <div class="modal">
-        <div class="modal__content">
-          <button type="button" class="modal__close"></button>
-          <div class="edit">
-            <h2 class="edit__title">Edit Profile</h2>
-            <form name="edit-profile" class="edit__form form">
-              <fieldset class="form__fieldset">
-                <input
-                  type="text"
-                  class="form__input form__input_type_name"
-                  placeholder="Name"
-                  name="name"
-                />
-                <input
-                  type="text"
-                  class="form__input form__input_type_job"
-                  placeholder="About me"
-                  name="job"
-                />
-                <button type="submit" class="form__button">Save</button>
-              </fieldset>
-            </form>
-          </div>
-        </div>
-      </div>
       <main>
         <section class="profile">
           <div class="profile__avatar">
@@ -47,7 +22,6 @@
               alt="profile pic"
               class="profile__image"
             />
-
             <div class="profile__info">
               <div class="profile__name">
                 <h1 class="profile__name-info">Jacques Cousteau</h1>
@@ -58,117 +32,89 @@
           </div>
           <button type="button" class="profile__button-add"></button>
         </section>
-        <section class="elements">
-          <ul class="elements__list">
-            <li class="element">
-              <img
-                src="./images/kirill-pershin-yosmite.png"
-                alt="valley pic"
-                class="element__image"
-              />
-              <div class="element__paragraph">
-                <h2 class="element__paragraph-title">Yosemite Valley</h2>
-                <button type="button" class="element__button">
-                  <img
-                    src="./images/heart.svg"
-                    alt="like icon"
-                    class="element__like"
-                  />
-                </button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/kirill-pershin-LakeLouise.png"
-                alt="lake pic"
-                class="element__image"
-              />
-              <div class="element__paragraph">
-                <h2 class="element__paragraph-title">Lake Louise</h2>
-                <button type="button" class="element__button">
-                  <img
-                    src="./images/heart.svg"
-                    alt="like icon"
-                    class="element__like"
-                  />
-                </button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/kirill-pershin-baldMountains.png"
-                alt="mountain pic"
-                class="element__image"
-              />
-              <div class="element__paragraph">
-                <h2 class="element__paragraph-title">Bald Mountains</h2>
-                <button type="button" class="element__button">
-                  <img
-                    src="./images/heart.svg"
-                    alt="like icon"
-                    class="element__like"
-                  />
-                </button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/kirill-pershin-Latemer.png"
-                alt="dark mountain pic"
-                class="element__image"
-              />
-              <div class="element__paragraph">
-                <h2 class="element__paragraph-title">Latemar</h2>
-                <button type="button" class="element__button">
-                  <img
-                    src="./images/heart.svg"
-                    alt="like icon"
-                    class="element__like"
-                  />
-                </button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/kirill-pershin-venoise.png"
-                alt="mountain river pic"
-                class="element__image"
-              />
-              <div class="element__paragraph">
-                <h2 class="element__paragraph-title">Vanoise National Park</h2>
-                <button type="button" class="element__button">
-                  <img
-                    src="./images/heart.svg"
-                    alt="like icon"
-                    class="element__like"
-                  />
-                </button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/kirill-pershin-Lago.png"
-                alt="lago pic"
-                class="element__image"
-              />
-              <div class="element__paragraph" lang="es">
-                <h2 class="element__paragraph-title">Lago di Braies</h2>
-                <button type="button" class="element__button">
-                  <img
-                    src="./images/heart.svg"
-                    alt="like icon"
-                    class="element__like"
-                  />
-                </button>
-              </div>
-            </li>
-          </ul>
+        <section class="cards">
+          <ul class="cards__list"></ul>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2021 Around The U.S.</p>
       </footer>
+      <div class="popup popup_type_profile">
+        <div class="popup__content">
+          <button
+            type="button"
+            class="popup__close popup_close_profile"
+          ></button>
+          <h2 class="popup__title">Edit Profile</h2>
+          <form
+            name="edit-profile"
+            class="popup__form popup__form_profile form"
+          >
+            <fieldset class="form__fieldset">
+              <input
+                type="text"
+                class="form__input form__input_type_name"
+                placeholder="Name"
+                name="name"
+              />
+              <input
+                type="text"
+                class="form__input form__input_type_job"
+                placeholder="About me"
+                name="job"
+              />
+              <button type="submit" class="form__button">Save</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <!-- second popup -->
+      <div class="popup popup_type_add-card">
+        <div class="popup__content">
+          <button
+            type="button"
+            class="popup__close popup_close_add-card"
+          ></button>
+          <h2 class="popup__title">New Place</h2>
+          <form name="new-place" class="popup__form popup__form_card form">
+            <fieldset class="form__fieldset">
+              <input
+                type="text"
+                class="form__input form__input_type_title"
+                placeholder="Title"
+                name="title"
+              />
+              <input
+                type="text"
+                class="form__input form__input_type_url"
+                placeholder="image URL"
+                name="link"
+              />
+              <button type="submit" class="form__button">Save</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <!-- 3rd popup -->
+      <div class="popup popup_type_preview">
+        <div class="popup__content popup__content_content_preview">
+          <button
+            type="button"
+            class="popup__close popup_close_preview"
+          ></button>
+          <img class="popup__image" src="" alt="" />
+        </div>
+      </div>
     </div>
-    <script src="./index.js"></script>
+    <template id="card-template"
+      ><li class="cards__item card">
+        <button class="card__trash-button" type="button"></button>
+        <div class="card__image" style=""></div>
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button type="button" class="card__like-button"></button>
+        </div></li
+    ></template>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

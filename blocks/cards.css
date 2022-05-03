@@ -1,9 +1,13 @@
-.elements {
+.cards {
   max-width: 880px;
   margin: 0 auto;
 }
+.cards__item {
+  width: 282px;
+  border-radius: 10px;
+}
 
-.elements__list {
+.cards__list {
   padding: 0;
   list-style-type: none;
   margin: 0 auto;
@@ -12,16 +16,17 @@
   grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
   max-width: 100%;
 }
+
 @media screen and (max-width: 960px) {
-  .elements {
+  .cards {
     max-width: 100%;
   }
-  .elements__list {
+  .cards__list {
     grid-template-columns: repeat(auto-fit, minmax(363px, 1fr));
   }
 }
 @media screen and (max-width: 600px) {
-  .elements__list {
+  .cards__list {
     grid-template-columns: 1fr;
     gap: 20px;
     align-content: center;
