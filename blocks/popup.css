@@ -12,12 +12,13 @@
   top: 0;
   left: 0;
   border-radius: 10px;
+  display: flex;
 }
 .popup_open {
-  display: flex;
   visibility: visible;
   opacity: 1;
   transition-delay: 0s;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 .popup__content {
   background: #fff;

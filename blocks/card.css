@@ -12,6 +12,7 @@
   background-position: center;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  cursor: pointer;
 }
 .card__trash-button {
   background-image: url(../images/Trash.svg);
@@ -25,6 +26,7 @@
   margin-left: 249px;
   margin-right: 15px;
   position: absolute;
+  cursor: pointer;
 }
 .card__description {
   display: flex;
