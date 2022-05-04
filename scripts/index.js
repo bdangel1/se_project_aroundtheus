@@ -40,14 +40,13 @@ const closeAddCardModalButton = document.querySelector(".popup__close_card");
 const closePreviewModalButton = document.querySelector(".popup__close_preview");
 const profileName = document.querySelector(".profile__name-info");
 const profileJob = document.querySelector(".profile__info-job");
-const CardName = document.querySelector(".card__title");
-const CardImage = document.querySelector(".card__image");
 
 // functions
 function onImagePreview(card) {
   const popupImage = previewModal.querySelector(".popup__image");
   popupImage.src = card.link;
-  previewModal.classList.toggle("popup_open");
+  popupImage.alt = `image preview${card.name}`;
+  toggleModal(previewModal);
 }
 
 function toggleModal(modal) {
@@ -100,7 +99,8 @@ const cardTemplate = document
   .content.querySelector(".card");
 const cardsList = document.querySelector(".cards__list");
 
-const renderCard = (card) => {
+//  card create
+const createCard = (card) => {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
@@ -108,13 +108,16 @@ const renderCard = (card) => {
   const cardLikeButton = cardElement.querySelector(".card__like-button");
   cardImage.style.backgroundImage = `url(${card.link})`;
   cardTitle.textContent = card.name;
-  cardsList.append(cardElement);
-
   cardImage.addEventListener("click", () => onImagePreview(card));
   cardDeleteButton.addEventListener("click", () => cardElement.remove());
   cardLikeButton.addEventListener("click", () => {
     cardLikeButton.classList.toggle("card__like-button_filled");
   });
+  return cardElement;
 };
 
+const renderCard = (card) => {
+  const cardElement = createCard(card);
+  cardsList.prepend(cardElement);
+};
 initialCards.forEach(renderCard);
