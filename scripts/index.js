@@ -1,3 +1,11 @@
+// imports
+import {
+  settings,
+  enableValidation,
+  disableButton,
+  resetFormErrors,
+} from "./validate.js";
+
 // declarations
 const initialCards = [
   {
@@ -46,30 +54,57 @@ function onImagePreview(card) {
   const popupImage = previewModal.querySelector(".popup__image");
   popupImage.src = card.link;
   popupImage.alt = `image preview${card.name}`;
-  toggleModal(previewModal);
+  openModal(previewModal);
 }
 
-function toggleModal(modal) {
-  modal.classList.toggle("popup_open");
+function openModal(modal) {
+  modal.classList.add("popup_open");
+  document.addEventListener("keydown", keyDownHandle);
+  document.addEventListener("mousedown", mouseDownHandle);
+}
+function closeModal(modal) {
+  modal.classList.remove("popup_open");
+  document.removeEventListener("keydown", keyDownHandle);
+  document.removeEventListener("mousedown", mouseDownHandle);
+}
+
+function keyDownHandle(evt) {
+  const openModal = document.querySelector(".popup_open");
+  if (evt.key === "Escape" && openModal) {
+    closeModal(openModal);
+  }
+}
+function mouseDownHandle(evt) {
+  const openModal = document.querySelector(".popup_open");
+  if (evt.target.classList.contains("popup_open")) {
+    closeModal(openModal);
+  }
 }
 
 // eventHandlers
 openEditModalButton.addEventListener("click", function () {
-  toggleModal(profileModal);
+  openModal(profileModal);
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
+  resetFormErrors(settings);
 });
+const addCardSubmitButton = document.querySelector(".form__button_disabled");
 openAddCardModalButton.addEventListener("click", function () {
-  toggleModal(addCardModal);
+  openModal(addCardModal);
+  addCardModalForm.reset();
+  disableButton(addCardSubmitButton, settings);
+
+  resetFormErrors(settings);
 });
 closeEditModalButton.addEventListener("click", () => {
-  toggleModal(profileModal);
+  closeModal(profileModal);
 });
+
 closeAddCardModalButton.addEventListener("click", () => {
-  toggleModal(addCardModal);
+  closeModal(addCardModal);
 });
 closePreviewModalButton.addEventListener("click", () => {
-  toggleModal(previewModal);
+  closeModal(previewModal);
 });
 
 // Forms
@@ -84,13 +119,12 @@ profileModalForm.addEventListener("submit", function (event) {
   event.preventDefault();
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
-  toggleModal(profileModal);
+  closeModal(profileModal);
 });
 addCardModalForm.addEventListener("submit", function (e) {
   e.preventDefault();
   renderCard({ name: inputTitle.value, link: inputLink.value });
-  addCardModalForm.reset();
-  toggleModal(addCardModal);
+  closeModal(addCardModal);
 });
 
 // wrappers
@@ -121,3 +155,4 @@ const renderCard = (card) => {
   cardsList.prepend(cardElement);
 };
 initialCards.forEach(renderCard);
+enableValidation(settings);

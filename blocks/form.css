@@ -45,6 +45,23 @@
   opacity: 80%;
   cursor: pointer;
 }
+.form__button_disabled {
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+  opacity: 20%;
+}
+.form__error_visible {
+  color: rgba(255, 0, 0, 1);
+  font-size: 14px;
+  line-height: 14.52px;
+  /* border-top: 1px solid red; */
+  padding-top: 0;
+  min-height: 17px;
+}
+.form__input_type_error {
+  visibility: visible;
+}
 @media screen and (max-width: 600px) {
   .form__fieldset {
     width: 238px;
