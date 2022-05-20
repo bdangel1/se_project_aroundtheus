@@ -51,16 +51,17 @@
   border: 1px solid rgba(0, 0, 0, 1);
   opacity: 20%;
 }
-.form__input_type_error {
-  padding: 0;
+.form__input_type-error {
+  padding-bottom: 5px;
+  border: none;
+  border-bottom: 1px solid red;
+  margin: 0;
+}
+.form__error_visible {
   color: rgba(255, 0, 0, 1);
   font-size: 12px;
   line-height: 14.52px;
   min-height: 17px;
-}
-.form__error_visible {
-  padding-top: 5px;
-  border-bottom: 1px solid red;
 }
 @media screen and (max-width: 600px) {
   .form__fieldset {

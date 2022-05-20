@@ -4,15 +4,15 @@ export function resetFormErrors(formEl, settings) {
     hideInputError(inputList, formEl, settings);
   });
 }
-const showInputError = (input, formEl, { errorClass }) => {
+const showInputError = (input, formEl, { inputErrorClass }) => {
   const ErrorSpan = formEl.querySelector(`#${input.id}-error`);
   ErrorSpan.textContent = input.validationMessage;
-  input.classList.add(errorClass);
+  input.classList.add(inputErrorClass);
 };
-const hideInputError = (input, formEl, { errorClass }) => {
-  const ErrorSpan = formEl.querySelector("#" + input.id + "-error");
+const hideInputError = (input, formEl, { inputErrorClass }) => {
+  const ErrorSpan = formEl.querySelector(`#${input.id}-error`);
   ErrorSpan.textContent = "";
-  input.classList.remove(errorClass);
+  input.classList.remove(inputErrorClass);
 };
 const checkInputValidity = (input, formEl, settings) => {
   if (input.validity.valid) {
@@ -64,6 +64,6 @@ export const settings = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_disabled",
-  inputErrorClass: "form__input_type_error",
+  inputErrorClass: "form__input_type-error",
   errorClass: "form__error_visible",
 };
