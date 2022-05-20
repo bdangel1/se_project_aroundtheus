@@ -55,7 +55,7 @@
   padding: 0;
   border-bottom: 1px solid red;
 }
-.form__input_type_error_visible {
+.form__input_type_error-visible {
   color: rgba(255, 0, 0, 1);
   font-size: 14px;
   min-height: 17px;
