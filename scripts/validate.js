@@ -1,20 +1,18 @@
-export function resetFormErrors(settings) {
-  const form = document.querySelector(settings.formSelector);
-  const inputs = Array.from(form.querySelectorAll(settings.inputSelector));
-  inputs.forEach((input) => {
-    hideInputError(input, settings);
+export function resetFormErrors(formEl, settings) {
+  const inputList = Array.from(formEl.querySelectorAll(settings.inputSelector));
+  inputList.forEach((input) => {
+    hideInputError(inputList, formEl, settings);
   });
 }
-const showInputError = (input, formEl, { errorClass }) => {
+const showInputError = (input, formEl, { inputErrorClass }) => {
   const ErrorSpan = formEl.querySelector(`#${input.id}-error`);
-  const error = input.validationMessage;
-  ErrorSpan.textContent = error;
-  input.classList.add(errorClass);
+  ErrorSpan.textContent = input.validationMessage;
+  input.classList.add(inputErrorClass);
 };
-const hideInputError = (input, formEl, { errorClass }) => {
+const hideInputError = (input, formEl, { inputErrorClass }) => {
   const ErrorSpan = formEl.querySelector("#" + input.id + "-error");
   ErrorSpan.textContent = "";
-  input.classList.remove(errorClass);
+  input.classList.remove(inputErrorClass);
 };
 const checkInputValidity = (input, formEl, settings) => {
   if (input.validity.valid) {
@@ -66,6 +64,6 @@ export const settings = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_disabled",
-  inputErrorClass: ".form__input_type_error",
-  errorClass: ".form__error_visible",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__error_visible",
 };

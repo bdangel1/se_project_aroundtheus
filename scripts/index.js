@@ -86,7 +86,7 @@ openEditModalButton.addEventListener("click", function () {
   openModal(profileModal);
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
-  resetFormErrors(settings);
+  // resetFormErrors(profileModalForm, settings);
 });
 const addCardSubmitButton = document.querySelector(".form__button_disabled");
 openAddCardModalButton.addEventListener("click", function () {
@@ -94,10 +94,11 @@ openAddCardModalButton.addEventListener("click", function () {
   addCardModalForm.reset();
   disableButton(addCardSubmitButton, settings);
 
-  resetFormErrors(settings);
+  // resetFormErrors(settings);
 });
 closeEditModalButton.addEventListener("click", () => {
   closeModal(profileModal);
+  profileModalForm.reset();
 });
 
 closeAddCardModalButton.addEventListener("click", () => {
