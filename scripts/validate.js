@@ -1,7 +1,7 @@
 export function resetFormErrors(formEl, settings) {
-  const inputList = Array.from(formEl.querySelectorAll(settings.inputSelector));
-  inputList.forEach((input) => {
-    hideInputError(inputList, formEl, settings);
+  const inputs = Array.from(formEl.querySelectorAll(settings.inputSelector));
+  inputs.forEach((input) => {
+    hideInputError(inputs, formEl, settings);
   });
 }
 const showInputError = (input, formEl, { inputErrorClass }) => {
@@ -65,5 +65,5 @@ export const settings = {
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_disabled",
   inputErrorClass: "form__input_type-error",
-  errorClass: "form__error_visible",
+  errorClass: "form__input_type-error_visible",
 };
