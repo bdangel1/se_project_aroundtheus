@@ -65,5 +65,5 @@ export const settings = {
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_disabled",
   inputErrorClass: "form__input_type-error",
-  errorClass: "form__input_type-error_visible",
+  errorClass: "form__input-error",
 };

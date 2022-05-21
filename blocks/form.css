@@ -57,8 +57,12 @@
   border: none;
   margin: 0;
   border-bottom: 1px solid red;
+  color: rgba(255, 0, 0, 1);
+  font-size: 12px;
+  line-height: 14.52px;
+  min-height: 17px;
 }
-.form__input_type-error_visible {
+.form__input-error {
   color: rgba(255, 0, 0, 1);
   font-size: 12px;
   line-height: 14.52px;
