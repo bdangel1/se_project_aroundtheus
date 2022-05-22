@@ -42,7 +42,6 @@ const previewModal = document.querySelector(".popup_type_preview");
 // buttons and other DOM elements
 const openEditModalButton = document.querySelector(".profile__name-button");
 const openAddCardModalButton = document.querySelector(".profile__button-add");
-const openPreviewModalButton = document.querySelector(".card__image");
 const closeEditModalButton = document.querySelector(".popup__close_profile");
 const closeAddCardModalButton = document.querySelector(".popup__close_card");
 const closePreviewModalButton = document.querySelector(".popup__close_preview");
@@ -59,22 +58,22 @@ function onImagePreview(card) {
 
 function openModal(modal) {
   modal.classList.add("popup_open");
-  document.addEventListener("keydown", keyDownHandle);
-  document.addEventListener("mousedown", mouseDownHandle);
+  document.addEventListener("keydown", handleKeyDown);
+  document.addEventListener("mousedown", handleMouseDown);
 }
 function closeModal(modal) {
   modal.classList.remove("popup_open");
-  document.removeEventListener("keydown", keyDownHandle);
-  document.removeEventListener("mousedown", mouseDownHandle);
+  document.removeEventListener("keydown", handleKeyDown);
+  document.removeEventListener("mousedown", handleMouseDown);
 }
 
-function keyDownHandle(evt) {
+function handleKeyDown(evt) {
   const openModal = document.querySelector(".popup_open");
   if (evt.key === "Escape" && openModal) {
     closeModal(openModal);
   }
 }
-function mouseDownHandle(evt) {
+function handleMouseDown(evt) {
   const openModal = document.querySelector(".popup_open");
   if (evt.target.classList.contains("popup_open")) {
     closeModal(openModal);
@@ -86,7 +85,8 @@ openEditModalButton.addEventListener("click", function () {
   openModal(profileModal);
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
-  // resetFormErrors(profileModalForm, settings);
+  resetFormErrors(profileModalForm, settings);
+  profileModalForm.reset();
 });
 const addCardSubmitButton = document.querySelector(".form__button_disabled");
 openAddCardModalButton.addEventListener("click", function () {
@@ -94,11 +94,10 @@ openAddCardModalButton.addEventListener("click", function () {
   addCardModalForm.reset();
   disableButton(addCardSubmitButton, settings);
 
-  // resetFormErrors(settings);
+  resetFormErrors(addCardModalForm, settings);
 });
 closeEditModalButton.addEventListener("click", () => {
   closeModal(profileModal);
-  profileModalForm.reset();
 });
 
 closeAddCardModalButton.addEventListener("click", () => {

@@ -1,12 +1,12 @@
 export function resetFormErrors(formEl, settings) {
   const inputs = Array.from(formEl.querySelectorAll(settings.inputSelector));
   inputs.forEach((input) => {
-    hideInputError(inputs, formEl, settings);
+    hideInputError(input, formEl, settings);
   });
 }
 const showInputError = (input, formEl, { inputErrorClass }) => {
-  const ErrorSpan = formEl.querySelector(`#${input.id}-error`);
-  ErrorSpan.textContent = input.validationMessage;
+  const errorSpan = formEl.querySelector(`#${input.id}-error`);
+  errorSpan.textContent = input.validationMessage;
   input.classList.add(inputErrorClass);
 };
 const hideInputError = (input, formEl, { inputErrorClass }) => {
@@ -43,7 +43,7 @@ const setEventListener = (formEl, settings) => {
   const inputList = Array.from(formEl.querySelectorAll(settings.inputSelector));
   const submitButton = formEl.querySelector(settings.submitButtonSelector);
   inputList.forEach((input) => {
-    input.addEventListener("input", (evt) => {
+    input.addEventListener("input", () => {
       checkInputValidity(input, formEl, settings);
       toggleButton(inputList, submitButton, settings);
     });
