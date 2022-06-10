@@ -1,6 +1,9 @@
 // imports
 
 import FormValidator from "./FormValidator.js";
+import { Card } from "./Card.js";
+import { closeModal, handleImagePreview, openModal } from "./utils.js";
+
 const settings = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
@@ -8,9 +11,7 @@ const settings = {
   inputErrorClass: "form__input_type-error",
   errorClass: "form__input-error",
 };
-import { Card } from "./Card.js";
-import { openModal } from "./utils.js";
-import { closeModal } from "./utils.js";
+
 // declarations
 const initialCards = [
   {
@@ -53,21 +54,12 @@ const closePreviewModalButton = document.querySelector(".popup__close_preview");
 const profileName = document.querySelector(".profile__name-info");
 const profileJob = document.querySelector(".profile__info-job");
 
-// functions
-function handleImagePreview(data) {
-  const popupImage = previewModal.querySelector(".popup__image");
-  popupImage.src = data.link;
-  popupImage.alt = `image preview${data.name}`;
-  openModal(previewModal);
-}
-
 // eventHandlers
 openEditModalButton.addEventListener("click", function () {
   openModal(profileModal);
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
   profileFormValidator.resetFormErrors();
-  profileModalForm.reset();
 });
 const addCardSubmitButton = document.querySelector(".form__button_disabled");
 openAddCardModalButton.addEventListener("click", function () {
@@ -79,6 +71,7 @@ openAddCardModalButton.addEventListener("click", function () {
 });
 closeEditModalButton.addEventListener("click", () => {
   closeModal(profileModal);
+  profileModalForm.reset();
 });
 
 closeAddCardModalButton.addEventListener("click", () => {
@@ -105,9 +98,12 @@ profileModalForm.addEventListener("submit", function (event) {
   profileJob.textContent = inputJob.value;
   closeModal(profileModal);
 });
+
+// Card Create
+
 addCardModalForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  renderCard({ name: inputTitle.value, link: inputLink.value });
+  renderCard({ name: inputTitle.value, link: inputLink.value }, cardsList);
   closeModal(addCardModal);
 });
 

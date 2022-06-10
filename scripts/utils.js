@@ -1,8 +1,20 @@
+// imports
 export const openModal = (modal) => {
   modal.classList.add("popup_open");
   document.addEventListener("keydown", handleKeyDown);
   document.addEventListener("mousedown", handleMouseDown);
 };
+
+// functions
+
+export function handleImagePreview(data) {
+  const previewModal = document.querySelector(".popup_type_preview");
+
+  const popupImage = previewModal.querySelector(".popup__image");
+  popupImage.src = data.link;
+  popupImage.alt = `image preview${data.name}`;
+  openModal(previewModal);
+}
 const handleKeyDown = (evt) => {
   const openModal = document.querySelector(".popup_open");
   if (evt.key === "Escape" && openModal) {
