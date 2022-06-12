@@ -6,11 +6,10 @@ export const openModal = (modal) => {
 };
 
 // functions
+const previewModal = document.querySelector(".popup_type_preview");
 
+const popupImage = previewModal.querySelector(".popup__image");
 export function handleImagePreview(data) {
-  const previewModal = document.querySelector(".popup_type_preview");
-
-  const popupImage = previewModal.querySelector(".popup__image");
   popupImage.src = data.link;
   popupImage.alt = `image preview${data.name}`;
   openModal(previewModal);
