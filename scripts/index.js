@@ -2,7 +2,11 @@
 
 import FormValidator from "./FormValidator.js";
 import { Card } from "./Card.js";
-import { closeModal, handleImagePreview, openModal } from "./utils.js";
+import { closeModal, openModal } from "./utils.js";
+import { PopupWithForm } from "./popupwithform.js";
+import { popupWithImage } from "./popupWithImage.js";
+import { Section } from "./Section.js";
+import { UserInfo } from "./UserInfo.js";
 
 const settings = {
   inputSelector: ".form__input",
@@ -51,14 +55,14 @@ const openAddCardModalButton = document.querySelector(".profile__button-add");
 const closeEditModalButton = document.querySelector(".popup__close_profile");
 const closeAddCardModalButton = document.querySelector(".popup__close_card");
 const closePreviewModalButton = document.querySelector(".popup__close_preview");
-const profileName = document.querySelector(".profile__name-info");
-const profileJob = document.querySelector(".profile__info-job");
 
 // eventHandlers
 openEditModalButton.addEventListener("click", function () {
+  const profileData = userInfo.getUserInfo();
   openModal(profileModal);
-  inputName.value = profileName.textContent;
-  inputJob.value = profileJob.textContent;
+  // addProfilePopup.open();
+  inputName.value = profileData.name;
+  inputJob.value = profileData.job;
   profileFormValidator.resetFormErrors();
 });
 const addCardSubmitButton = document.querySelector(".form__button_disabled");
@@ -86,37 +90,66 @@ const profileModalForm = document.querySelector(".popup__form_profile");
 const addCardModalForm = document.querySelector(".popup__form_card");
 const inputName = document.querySelector(".form__input_type_name");
 const inputJob = document.querySelector(".form__input_type_job");
-const inputTitle = document.querySelector(".form__input_type_title");
-const inputLink = document.querySelector(".form__input_type_url");
 const profileFormValidator = new FormValidator(settings, profileModalForm);
 const addCardFormValidator = new FormValidator(settings, addCardModalForm);
 profileFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
-profileModalForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  profileName.textContent = inputName.value;
-  profileJob.textContent = inputJob.value;
-  closeModal(profileModal);
-});
 
-// Card Create
+const handleAddCardSubmit = (data) => {
+  renderCard({ name: data["title"], name: link["link"] }, cardsList);
+  addCardPopup.close();
+};
 
-addCardModalForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  renderCard({ name: inputTitle.value, link: inputLink.value }, cardsList);
-  closeModal(addCardModal);
-});
+const handleProfileFormSubmit = (data) => {
+  userInfo.setUserInfo(data.name, data.job);
+  addProfilePopup.close();
+};
+
+const addCardPopup = new PopupWithForm(
+  ".popup__form_card",
+  handleAddCardSubmit
+);
+addCardPopup.setEventListeners();
+
+const addProfilePopup = new PopupWithForm(
+  ".popup__form_profile",
+  handleProfileFormSubmit
+);
+addProfilePopup.setEventListeners();
+
+const imagePopup = new popupWithImage(".popup__image");
+imagePopup.addEventListener();
 
 // wrappers
 
-const cardsList = document.querySelector(".cards__list");
-
 const cardTemplateSelector = "#card-template";
-const renderCard = (data, cardsList) => {
-  const card = new Card(data, cardTemplateSelector, handleImagePreview);
+const renderCard = (data) => {
+  const card = new Card(data, cardTemplateSelector, () => {
+    imagePopup.open(data.name, data.link);
+  });
+
   const cardElement = card.createCard();
-  cardsList.prepend(cardElement);
+  section.addItems(cardElement);
 };
-initialCards.forEach((data) => {
-  renderCard(data, cardsList);
+
+const section = new Section(
+  { items: initialCards, renderer: renderCard },
+  ".cards__list"
+);
+section.renderItems();
+const userInfo = new UserInfo({
+  profileNameSelector: ".profile__name-info",
+  profileJobSelector: ".profile__info-job",
 });
+
+// submit
+// profileModalForm.addEventListener("submit", function (event) {
+//   event.preventDefault();
+//   console.log("mmm");
+//   closeModal(profileModal);
+// });
+
+// addCardModalForm.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   closeModal(addCardModal);
+// });

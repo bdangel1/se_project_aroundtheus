@@ -1,4 +1,3 @@
-// imports
 export const openModal = (modal) => {
   modal.classList.add("popup_open");
   document.addEventListener("keydown", handleKeyDown);
@@ -6,14 +5,7 @@ export const openModal = (modal) => {
 };
 
 // functions
-const previewModal = document.querySelector(".popup_type_preview");
 
-const popupImage = previewModal.querySelector(".popup__image");
-export function handleImagePreview(data) {
-  popupImage.src = data.link;
-  popupImage.alt = `image preview${data.name}`;
-  openModal(previewModal);
-}
 const handleKeyDown = (evt) => {
   const openModal = document.querySelector(".popup_open");
   if (evt.key === "Escape" && openModal) {
