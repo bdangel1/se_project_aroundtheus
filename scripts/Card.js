@@ -16,9 +16,7 @@ export class Card {
   };
 
   _addEventListener() {
-    this._cardImage.addEventListener("click", () =>
-      this._handleImageClick(this._data)
-    );
+    this._cardImage.addEventListener("click", () => this._handleImageClick());
     this._cardDeleteButton.addEventListener(
       "click",
       this._handleCardDeleteButton
