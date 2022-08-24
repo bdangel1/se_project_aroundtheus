@@ -51,20 +51,22 @@ const cardsList = document.querySelector(".cards__list");
 
 // instances
 
-const handleProfileFormSubmit = (data) => {
-  userInfo.setUserInfo(data.name, data.job);
-  addProfilePopup.close();
-};
-
 const handleAddCardSubmit = (data) => {
-  renderCard({ name: data["name"], name: data["link"] }, cardsList);
+  renderCard({ name: data["title"], link: data["link"] }, cardsList);
   addCardPopup.close();
+  console.log(data);
 };
 const addCardPopup = new PopupWithForm(
   ".popup_type_add-card",
   handleAddCardSubmit
 );
 addCardPopup.setEventListeners();
+
+const handleProfileFormSubmit = (data) => {
+  userInfo.setUserInfo(data.name, data.job);
+  addProfilePopup.close();
+  console.log(data);
+};
 
 const addProfilePopup = new PopupWithForm(
   ".popup_type_profile",
