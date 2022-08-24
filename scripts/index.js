@@ -54,7 +54,6 @@ const cardsList = document.querySelector(".cards__list");
 const handleAddCardSubmit = (data) => {
   renderCard({ name: data["title"], link: data["link"] }, cardsList);
   addCardPopup.close();
-  console.log(data);
 };
 const addCardPopup = new PopupWithForm(
   ".popup_type_add-card",
@@ -65,7 +64,6 @@ addCardPopup.setEventListeners();
 const handleProfileFormSubmit = (data) => {
   userInfo.setUserInfo(data.name, data.job);
   addProfilePopup.close();
-  console.log(data);
 };
 
 const addProfilePopup = new PopupWithForm(
