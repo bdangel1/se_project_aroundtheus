@@ -7,18 +7,21 @@
     <meta name="Author" content="Malahk Christmas" />
     <meta name="keywords" content="USA, America, travel" />
     <title>USA</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header">
-        <img src="./images/Vector.svg" alt="icon" class="header__icon" />
+        <img
+          src="<%require('./images/Vector.svg')%>"
+          alt="icon"
+          class="header__icon"
+        />
       </header>
       <main>
         <section class="profile">
           <div class="profile__avatar">
             <img
-              src="./images/profile.jpg"
+              src="<%=require('./images/profile.jpg')%>"
               alt="profile pic"
               class="profile__image"
             />
@@ -139,6 +142,5 @@
           <button type="button" class="card__like-button"></button>
         </div></li
     ></template>
-    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>

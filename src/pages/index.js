@@ -1,11 +1,11 @@
 // imports
-
-import FormValidator from "./formValidator.js";
-import { Card } from "./card.js";
-import { PopupWithForm } from "./popupWithForm.js";
-import { popupWithImage } from "./popupWithImage.js";
-import { Section } from "./section.js";
-import { UserInfo } from "./userInfo.js";
+import "./index.css";
+import FormValidator from "../scripts/formValidator.js";
+import { Card } from "../scripts/card.js";
+import { PopupWithForm } from "../scripts/popupWithForm.js";
+import { popupWithImage } from "../scripts/popupWithImage.js";
+import { Section } from "../scripts/section.js";
+import { UserInfo } from "../scripts/userInfo.js";
 import {
   initialCards,
   openEditModalButton,
@@ -15,7 +15,7 @@ import {
   addCardModalForm,
   inputName,
   inputJob,
-} from "./constants.js";
+} from "../scripts/constants.js";
 
 const settings = {
   inputSelector: ".form__input",
