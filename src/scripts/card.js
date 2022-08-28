@@ -15,7 +15,7 @@ export class Card {
     evt.target.classList.toggle("card__like-button_filled");
   };
 
-  _addEventListener = () => {
+  _addEventListeners = () => {
     this._cardImage.addEventListener("click", () => this._handleImageClick());
     this._cardDeleteButton.addEventListener(
       "click",
@@ -35,7 +35,7 @@ export class Card {
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
     this._cardElement.querySelector(".card__title").textContent =
       this._data.name;
-    this._addEventListener();
+    this._addEventListeners();
     return this._cardElement;
   };
 }
