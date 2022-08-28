@@ -1,13 +1,13 @@
 // imports
+import { initialCards } from "../scripts/Utils.js";
 import "./index.css";
 import FormValidator from "../scripts/formValidator.js";
-import { Card } from "../scripts/card.js";
+import { Card } from "../scripts/Card.js";
 import { PopupWithForm } from "../scripts/popupWithForm.js";
 import { popupWithImage } from "../scripts/popupWithImage.js";
 import { Section } from "../scripts/section.js";
 import { UserInfo } from "../scripts/userInfo.js";
 import {
-  initialCards,
   openEditModalButton,
   openAddCardModalButton,
   cardsList,
@@ -59,7 +59,7 @@ const renderCard = (data) => {
   });
 
   const cardElement = card.createCard();
-  section.addItems(cardElement);
+  section.addItem(cardElement);
 };
 const section = new Section(
   { items: initialCards, renderer: renderCard },
@@ -83,7 +83,7 @@ openEditModalButton.addEventListener("click", function () {
 const addCardSubmitButton = document.querySelector(".form__button_disabled");
 openAddCardModalButton.addEventListener("click", function () {
   addCardPopup.open();
-  addCardFormValidator._disableButton(addCardSubmitButton, settings);
+  addCardFormValidator.disableButton(addCardSubmitButton, settings);
 
   addCardFormValidator.resetFormErrors(addCardModalForm, settings);
 });

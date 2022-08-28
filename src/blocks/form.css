@@ -41,7 +41,7 @@
   border: none;
   border-radius: 2px;
 }
-.form__button:hover {
+.form__button:hover:not(:disabled) {
   opacity: 80%;
   cursor: pointer;
 }

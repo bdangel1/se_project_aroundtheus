@@ -15,14 +15,14 @@ export class Card {
     evt.target.classList.toggle("card__like-button_filled");
   };
 
-  _addEventListener() {
+  _addEventListener = () => {
     this._cardImage.addEventListener("click", () => this._handleImageClick());
     this._cardDeleteButton.addEventListener(
       "click",
       this._handleCardDeleteButton
     );
     this._cardLikeButton.addEventListener("click", this._handleLikeButton);
-  }
+  };
 
   createCard = () => {
     this._cardElement = this._getTemplate().cloneNode(true);
