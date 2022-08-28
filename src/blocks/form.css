@@ -12,15 +12,14 @@
   flex-direction: column;
   justify-content: center;
   padding: 0;
+  margin: 54px auto 0;
 }
 .form__input {
   border: none;
   border-bottom: 1px solid #0001;
   padding-bottom: 13.26px;
-  padding-top: 54px;
   font-size: 14px;
   line-height: 16.94px;
-  margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -71,7 +70,6 @@
   .form__fieldset {
     width: 238px;
     margin-top: 76px;
-    gap: 30px;
   }
   .form__input {
     padding-bottom: 9px;
