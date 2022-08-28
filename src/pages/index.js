@@ -1,13 +1,13 @@
 // imports
-import { initialCards } from "../scripts/Utils.js";
 import "./index.css";
 import FormValidator from "../scripts/FormValidator.js";
 import { Card } from "../scripts/Card.js";
 import { PopupWithForm } from "../scripts/PopupWithForm.js";
-import { popupWithImage } from "../scripts/PopupWithImage.js";
+import { PopupWithImage } from "../scripts/PopupWithImage.js";
 import { Section } from "../scripts/Section.js";
 import { UserInfo } from "../scripts/UserInfo.js";
 import {
+  initialCards,
   openEditModalButton,
   openAddCardModalButton,
   cardsList,
@@ -15,7 +15,7 @@ import {
   addCardModalForm,
   inputName,
   inputJob,
-} from "../scripts/constants.js";
+} from "../utils/constants.js";
 
 const settings = {
   inputSelector: ".form__input",
@@ -48,7 +48,7 @@ const addProfilePopup = new PopupWithForm(
 );
 addProfilePopup.setEventListeners();
 
-const imagePopup = new popupWithImage(".popup_type_preview");
+const imagePopup = new PopupWithImage(".popup_type_preview");
 imagePopup.setEventListeners();
 
 // rendercard
