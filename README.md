@@ -20,4 +20,4 @@
 - Flat BEM
 - JAVA Script
 
-- Link to Project https://bdangel1.github.io/web_project_4/
+- Link to Project https://bdangel1.github.io/se_project_aroundtheus/
