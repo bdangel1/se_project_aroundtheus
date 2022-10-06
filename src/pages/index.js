@@ -1,4 +1,5 @@
 // imports
+import { api } from "../scripts/Api.js";
 import "./index.css";
 import FormValidator from "../scripts/FormValidator.js";
 import { Card } from "../scripts/Card.js";
@@ -7,7 +8,7 @@ import { PopupWithImage } from "../scripts/PopupWithImage.js";
 import { Section } from "../scripts/Section.js";
 import { UserInfo } from "../scripts/UserInfo.js";
 import {
-  initialCards,
+  /*initialCards,*/
   openEditModalButton,
   openAddCardModalButton,
   cardsList,
@@ -27,8 +28,32 @@ const settings = {
 
 // instances
 
+api
+  .getUserInfo()
+  .then((res) => {
+    userInfo.setUserInfo(res.name, res.about);
+    console.log("res getUserInfo =>", res);
+  })
+  .catch(console.log);
+
+api
+  .getCards()
+  .then((res) => {
+    console.log("res getCards =>", res);
+    section.renderItems(res);
+  })
+  .catch(console.log);
+
 const handleAddCardSubmit = (data) => {
-  renderCard({ name: data["title"], link: data["link"] }, cardsList);
+  console.log("data =>", data);
+
+  api
+    .addCard({ name: data["title"], link: data.link })
+    .then((res) => {
+      console.log("res getCards =>", res);
+      renderCard(res.name, res.link, cardsList);
+    })
+    .catch(console.log);
   addCardPopup.close();
 };
 const addCardPopup = new PopupWithForm(
@@ -38,8 +63,16 @@ const addCardPopup = new PopupWithForm(
 addCardPopup.setEventListeners();
 
 const handleProfileFormSubmit = (data) => {
-  userInfo.setUserInfo(data.name, data.job);
-  addProfilePopup.close();
+  console.log("data =>", data);
+  api
+    .editProfile({ name: data.name, about: data.job })
+    .then((res) => {
+      userInfo.setUserInfo(res.name, res.about);
+    })
+    .catch(console.log)
+    .finally(() => {
+      addProfilePopup.close();
+    });
 };
 
 const addProfilePopup = new PopupWithForm(
@@ -61,11 +94,8 @@ const renderCard = (data) => {
   const cardElement = card.createCard();
   section.addItem(cardElement);
 };
-const section = new Section(
-  { items: initialCards, renderer: renderCard },
-  ".cards__list"
-);
-section.renderItems();
+const section = new Section({ renderer: renderCard }, ".cards__list");
+
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__name-info",
   profileJobSelector: ".profile__info-job",
