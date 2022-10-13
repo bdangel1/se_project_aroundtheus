@@ -51,7 +51,7 @@ const handleAddCardSubmit = (data) => {
     .addCard({ name: data.title, link: data.link })
     .then((res) => {
       console.log("res getCards =>", res);
-      renderCard(res.name, res.link, cardsList);
+      renderCard(res.name, res.title, cardsList);
     })
     .catch(console.log);
   addCardPopup.close();

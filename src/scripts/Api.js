@@ -20,8 +20,8 @@ class Api {
       headers: this._headers,
     }).then(this._checkRes);
   }
-  editProfile(name, about) {
-    console.log("inside..", name, about);
+  editProfile({ name, about }) {
+    console.log("inside..", { name, about });
     return fetch(this._baseUrl + "/users/me", {
       method: "PATCH",
       headers: this._headers,
