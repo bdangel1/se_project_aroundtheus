@@ -48,7 +48,7 @@ const handleAddCardSubmit = (data) => {
   console.log("data =>", data);
 
   api
-    .addCard({ name: data["title"], link: data.link })
+    .addCard({ name: data.title, link: data.link })
     .then((res) => {
       console.log("res getCards =>", res);
       renderCard(res.name, res.link, cardsList);
