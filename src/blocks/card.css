@@ -56,7 +56,10 @@
   width: 21px;
   height: 19px;
 }
-
+.card__likes-count {
+  display: flex;
+  justify-content: center;
+}
 .card__like-button:hover {
   opacity: 50%;
 }

@@ -20,9 +20,16 @@
       <main>
         <section class="profile">
           <div class="profile__avatar">
+            <div class="profile__change-button-hide">
+              <button type="button" class="profile__change-button">
+                <img class="profile__change-button-icon" alt="vector of edit
+                icon" src="<%=require('./images/edit.svg')%>"
+              </button>
+            </div>
             <img
               src="<%=require('./images/profile.jpg')%>"
-              alt="profile pic"
+              alt="profile
+            pic"
               class="profile__image"
             />
             <div class="profile__info">
@@ -122,6 +129,49 @@
           </form>
         </div>
       </div>
+      <!-- avatar popup -->
+      <div class="popup popup_type_avatar-change">
+        <div class="popup__content">
+          <button type="button" class="popup__close popup__close_card"></button>
+          <h2 class="popup__title">Change profile picture</h2>
+          <form
+            name="new-place"
+            class="popup__form popup__form_profile form"
+            novalidate
+          >
+            <fieldset class="form__fieldset">
+              <input
+                id="link_input"
+                type="url"
+                class="form__input form__input_type_url"
+                placeholder="image URL"
+                name="link"
+                required
+              />
+              <span id="link_input-error" class="form__input-error"></span>
+              <button type="submit" class="form__button form__button_disabled">
+                Save
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <!-- delete popup -->
+      <div class="popup popup_type_confirm-delete">
+        <div class="popup__content">
+          <button type="button" class="popup__close popup__close_card"></button>
+          <h2 class="popup__title">Are you sure</h2>
+          <form
+            name="new-place"
+            class="popup__form popup__form_card form"
+            novalidate
+          >
+            <fieldset class="form__fieldset">
+              <button type="submit" class="form__button">Yes</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
       <!-- 3rd popup -->
       <div class="popup popup_type_preview">
         <div class="popup__content popup__content_content_preview">
@@ -139,7 +189,10 @@
         <div class="card__image" alt="image view" style=""></div>
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button type="button" class="card__like-button"></button>
+          <div class="card__likes">
+            <button type="button" class="card__like-button"></button>
+            <div class="card__likes-count"></div>
+          </div>
         </div></li
     ></template>
   </body>

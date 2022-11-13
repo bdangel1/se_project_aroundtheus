@@ -1,3 +1,5 @@
+import { data } from "autoprefixer";
+
 class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
@@ -21,7 +23,6 @@ class Api {
     }).then(this._checkRes);
   }
   editProfile({ name, about }) {
-    console.log("inside..", { name, about });
     return fetch(this._baseUrl + "/users/me", {
       method: "PATCH",
       headers: this._headers,
@@ -31,9 +32,8 @@ class Api {
       }),
     }).then(this._checkRes);
   }
-  addCard({ name, link }) {
-    console.log({ name, link });
 
+  addCard({ name, link }) {
     return fetch(this._baseUrl + "/cards", {
       method: "POST",
       headers: this._headers,
@@ -43,11 +43,38 @@ class Api {
       }),
     }).then(this._checkRes);
   }
+  addLike(id) {
+    return fetch(this._baseUrl + "/cards/likes" + id, {
+      method: "PUT",
+      headers: this._headers,
+    }).then(this._checkRes);
+  }
+  removeLike(id) {
+    return fetch(this._baseUrl + "/cards/likes" + id, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._checkRes);
+  }
+  editAvatar(avatar) {
+    return fetch(this._baseUrl + "/users/me/avatar", {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar,
+      }),
+    }).then(this._checkRes);
+  }
+  deleteCard(id) {
+    return fetch(this._baseUrl + "/cards" + id, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._checkRes);
+  }
 }
 export const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/cohort-3-en",
   headers: {
     authorization: "fb5ab717-a6a7-4535-acb6-3693eaf444c4",
-    "content-type": "aplication/json",
+    "content-type": "application/json",
   },
 });
