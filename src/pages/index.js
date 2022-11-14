@@ -8,7 +8,6 @@ import { PopupWithImage } from "../scripts/PopupWithImage.js";
 import { Section } from "../scripts/Section.js";
 import { UserInfo } from "../scripts/UserInfo.js";
 import {
-  /*initialCards,*/
   openEditModalButton,
   openAddCardModalButton,
   cardsList,
@@ -65,10 +64,12 @@ const handleProfileFormSubmit = (data) => {
     });
 };
 
-const handleAvatarFormSubmit = ({ link }) => {
+const handleAvatarFormSubmit = (data) => {
+  console.log("data =>", data);
   api
-    .editAvatar(link)
+    .editAvatar(data.link)
     .then((res) => {
+      console.log("res =>", res);
       userInfo.setUserInfo(res.name, res.about, res.avatar);
     })
     .catch(console.log)
@@ -80,17 +81,23 @@ const handleAvatarFormSubmit = ({ link }) => {
 const handleDeleteClick = (card) => {
   confirmDeletePopup.open();
   confirmDeletePopup.changeHandleSubmit(() => {
-    api.deleteCard(card.getId).then(() => {
+    api.deleteCard(card.getId()).then(() => {
       card.cardRemove();
+      confirmDeletePopup.close();
     });
   });
 };
 
 const handleLikeClick = (card) => {
-  const request = card.isLiked() ? api.removeLike : api.addLike;
-  request().then((res) => {
-    card.setLikes(res.likes);
-  });
+  if (card.isLiked()) {
+    api.removeLike(card.getId()).then((res) => {
+      card.setLikes(res.likes);
+    });
+  } else {
+    api.addLike(card.getId()).then((res) => {
+      card.setLikes(res.likes);
+    });
+  }
 };
 
 // instances

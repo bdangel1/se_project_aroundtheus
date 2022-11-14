@@ -44,13 +44,13 @@ class Api {
     }).then(this._checkRes);
   }
   addLike(id) {
-    return fetch(this._baseUrl + "/cards/likes" + id, {
+    return fetch(this._baseUrl + "/cards/likes/" + id, {
       method: "PUT",
       headers: this._headers,
     }).then(this._checkRes);
   }
   removeLike(id) {
-    return fetch(this._baseUrl + "/cards/likes" + id, {
+    return fetch(this._baseUrl + "/cards/likes/" + id, {
       method: "DELETE",
       headers: this._headers,
     }).then(this._checkRes);
@@ -64,8 +64,8 @@ class Api {
       }),
     }).then(this._checkRes);
   }
-  deleteCard(id) {
-    return fetch(this._baseUrl + "/cards" + id, {
+  deleteCard(cardId) {
+    return fetch(this._baseUrl + "/cards/" + cardId, {
       method: "DELETE",
       headers: this._headers,
     }).then(this._checkRes);
