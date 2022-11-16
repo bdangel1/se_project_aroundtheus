@@ -32,7 +32,7 @@ let userId;
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([userData, cards]) => {
     userId = userData._id;
-    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setUserInfo(userData.name, userData.about, userData.avatar);
     section.renderItems(cards);
   })
   .catch(console.log);
@@ -65,11 +65,9 @@ const handleProfileFormSubmit = (data) => {
 };
 
 const handleAvatarFormSubmit = (data) => {
-  console.log("data =>", data);
   api
     .editAvatar(data.link)
     .then((res) => {
-      console.log("res =>", res);
       userInfo.setUserInfo(res.name, res.about, res.avatar);
     })
     .catch(console.log)
