@@ -57,7 +57,13 @@
 .popup__image {
   max-width: 100%;
 }
-
+.popup__image-caption {
+  max-width: 291px;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
 .popup__close {
   background-image: url(../images/Close-Icon.svg);
   background-repeat: no-repeat;

@@ -10,9 +10,12 @@ export class UserInfo {
       job: this._profileJob.textContent,
     };
   }
-  setUserInfo(name, job, avatar) {
+
+  setUserInfo(name, job) {
     this._profileName.textContent = name;
     this._profileJob.textContent = job;
-    this._avatarEl.style.background = avatar;
+  }
+  setAvatar(avatar) {
+    this._avatarEl.src = avatar;
   }
 }

@@ -32,7 +32,8 @@ let userId;
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([userData, cards]) => {
     userId = userData._id;
-    userInfo.setUserInfo(userData.name, userData.about, userData.avatar);
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setAvatar(userData.avatar);
     section.renderItems(cards);
   })
   .catch(console.log);
@@ -44,10 +45,12 @@ const handleAddCardSubmit = (data) => {
     .addCard({ name: data["title"], link: data.link })
     .then((res) => {
       renderCard(res, cardsList);
-      addCardPopup.changeText("save");
+      addCardPopup.close();
     })
-    .catch(console.log);
-  addCardPopup.close();
+    .catch(console.log)
+    .finally(() => {
+      addCardPopup.changeText("save");
+    });
 };
 
 const handleProfileFormSubmit = (data) => {
@@ -56,11 +59,11 @@ const handleProfileFormSubmit = (data) => {
     .editProfile({ name: data.name, about: data.job })
     .then((res) => {
       userInfo.setUserInfo(res.name, res.about);
-      addProfilePopup.changeText("save");
+      addProfilePopup.close();
     })
     .catch(console.log)
     .finally(() => {
-      addProfilePopup.close();
+      addProfilePopup.changeText("save");
     });
 };
 
@@ -69,18 +72,16 @@ const handleAvatarFormSubmit = (data) => {
     .editAvatar(data.link)
     .then((res) => {
       userInfo.setUserInfo(res.name, res.about, res.avatar);
-    })
-    .catch(console.log)
-    .finally(() => {
       avatarChangePopup.close();
-    });
+    })
+    .catch(console.log);
 };
 
 const handleDeleteClick = (card) => {
   confirmDeletePopup.open();
   confirmDeletePopup.changeHandleSubmit(() => {
     api.deleteCard(card.getId()).then(() => {
-      card.cardRemove();
+      card.removeCard();
       confirmDeletePopup.close();
     });
   });
@@ -88,12 +89,15 @@ const handleDeleteClick = (card) => {
 
 const handleLikeClick = (card) => {
   if (card.isLiked()) {
-    api.removeLike(card.getId()).then((res) => {
-      card.setLikes(res.likes);
-    });
+    api
+      .removeLike(card.getId())
+      .then((res) => {
+        card.renderLikes(res.likes);
+      })
+      .catch(console.log);
   } else {
     api.addLike(card.getId()).then((res) => {
-      card.setLikes(res.likes);
+      card.renderLikes(res.likes);
     });
   }
 };
@@ -143,6 +147,15 @@ const renderCard = (data) => {
 };
 const section = new Section({ renderer: renderCard }, ".cards__list");
 
+// form
+const profileFormValidator = new FormValidator(settings, profileModalForm);
+const addCardFormValidator = new FormValidator(settings, addCardModalForm);
+const avatarFormValidator = new FormValidator(settings, avatarWindow);
+
+profileFormValidator.enableValidation();
+addCardFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
+
 // setEvenListeners
 avatarChangePopup.setEventListeners();
 imagePopup.setEventListeners();
@@ -160,22 +173,15 @@ openEditModalButton.addEventListener("click", function () {
   profileFormValidator.resetFormErrors();
 });
 
-const addCardSubmitButton = document.querySelector(".form__button_disabled");
 openAddCardModalButton.addEventListener("click", function () {
   addCardPopup.open();
-  addCardFormValidator.disableButton(addCardSubmitButton, settings);
-
   addCardFormValidator.resetFormErrors(addCardModalForm, settings);
+  // addCardFormValidator.disableButton(addCardModalForm, settings);
 });
 avatar.addEventListener("click", () => {
   avatarChangePopup.open();
+  // const avatarData = userInfo.getUserInfo();
+  // inputName.value = avatarData.link;
+
+  avatarFormValidator.resetFormErrors();
 });
-
-// form
-const profileFormValidator = new FormValidator(settings, profileModalForm);
-const addCardFormValidator = new FormValidator(settings, addCardModalForm);
-const avatarFormValidator = new FormValidator(settings, avatarWindow);
-
-profileFormValidator.enableValidation();
-addCardFormValidator.enableValidation();
-avatarFormValidator.enableValidation();
