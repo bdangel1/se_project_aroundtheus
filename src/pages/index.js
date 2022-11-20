@@ -1,4 +1,5 @@
 // imports
+import { PopupWithConfirmation } from "../scripts/PopupWithConfirmation.js";
 import { api } from "../scripts/Api.js";
 import "./index.css";
 import FormValidator from "../scripts/FormValidator.js";
@@ -79,11 +80,19 @@ const handleAvatarFormSubmit = (data) => {
 
 const handleDeleteClick = (card) => {
   confirmDeletePopup.open();
+
   confirmDeletePopup.changeHandleSubmit(() => {
-    api.deleteCard(card.getId()).then(() => {
-      card.removeCard();
-      confirmDeletePopup.close();
-    });
+    confirmDeletePopup.changeText("loading...");
+
+    api
+      .deleteCard(card.getId())
+      .then(() => {
+        card.removeCard();
+        confirmDeletePopup.close();
+      })
+      .finally(() => {
+        confirmDeletePopup.changeText("yes");
+      });
   });
 };
 
@@ -120,7 +129,9 @@ const avatarChangePopup = new PopupWithForm(
   handleAvatarFormSubmit
 );
 
-const confirmDeletePopup = new PopupWithForm(".popup_type_confirm-delete");
+const confirmDeletePopup = new PopupWithConfirmation(
+  ".popup_type_confirm-delete"
+);
 
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__name-info",
