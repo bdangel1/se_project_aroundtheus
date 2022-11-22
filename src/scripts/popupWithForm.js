@@ -24,9 +24,7 @@ export class PopupWithForm extends Popup {
       this._handleSubmit(this._getInputValues());
     });
   }
-  changeHandleSubmit(newSubmit) {
-    this._handleSubmit = newSubmit;
-  }
+
   changeText(text) {
     this._submitButton.textContent = text;
   }

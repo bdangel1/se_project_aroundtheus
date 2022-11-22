@@ -1,6 +1,6 @@
 // imports
 import { PopupWithConfirmation } from "../scripts/PopupWithConfirmation.js";
-import { api } from "../scripts/Api.js";
+import { api } from "../utils/Api.js";
 import "./index.css";
 import FormValidator from "../scripts/FormValidator.js";
 import { Card } from "../scripts/Card.js";
@@ -69,20 +69,24 @@ const handleProfileFormSubmit = (data) => {
 };
 
 const handleAvatarFormSubmit = (data) => {
+  avatarChangePopup.changeText("loading...");
   api
     .editAvatar(data.link)
     .then((res) => {
       userInfo.setUserInfo(res.name, res.about, res.avatar);
       avatarChangePopup.close();
     })
-    .catch(console.log);
+    .catch(console.log)
+    .finally(() => {
+      avatarChangePopup.changeText("save");
+    });
 };
 
 const handleDeleteClick = (card) => {
   confirmDeletePopup.open();
 
   confirmDeletePopup.changeHandleSubmit(() => {
-    confirmDeletePopup.changeText("loading...");
+    confirmDeletePopup.changeText("deleting...");
 
     api
       .deleteCard(card.getId())
@@ -101,13 +105,16 @@ const handleLikeClick = (card) => {
     api
       .removeLike(card.getId())
       .then((res) => {
-        card.renderLikes(res.likes);
+        card.setLikes(res.likes);
       })
       .catch(console.log);
   } else {
-    api.addLike(card.getId()).then((res) => {
-      card.renderLikes(res.likes);
-    });
+    api
+      .addLike(card.getId())
+      .then((res) => {
+        card.setLikes(res.likes);
+      })
+      .catch(console.log);
   }
 };
 
@@ -185,14 +192,12 @@ openEditModalButton.addEventListener("click", function () {
 });
 
 openAddCardModalButton.addEventListener("click", function () {
+  addCardFormValidator.disableButton();
   addCardPopup.open();
   addCardFormValidator.resetFormErrors(addCardModalForm, settings);
-  // addCardFormValidator.disableButton(addCardModalForm, settings);
 });
 avatar.addEventListener("click", () => {
   avatarChangePopup.open();
-  // const avatarData = userInfo.getUserInfo();
-  // inputName.value = avatarData.link;
 
   avatarFormValidator.resetFormErrors();
 });
