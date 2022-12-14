@@ -1,13 +1,13 @@
 // imports
-import { PopupWithConfirmation } from "../scripts/PopupWithConfirmation.js";
+import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 import { api } from "../utils/Api.js";
 import "./index.css";
-import FormValidator from "../scripts/FormValidator.js";
-import { Card } from "../scripts/Card.js";
-import { PopupWithForm } from "../scripts/PopupWithForm.js";
-import { PopupWithImage } from "../scripts/PopupWithImage.js";
-import { Section } from "../scripts/Section.js";
-import { UserInfo } from "../scripts/UserInfo.js";
+import FormValidator from "../components/FormValidator.js";
+import { Card } from "../components/Card.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { Section } from "../components/Section.js";
+import { UserInfo } from "../components/UserInfo.js";
 import {
   openEditModalButton,
   openAddCardModalButton,
@@ -84,10 +84,8 @@ const handleAvatarFormSubmit = (data) => {
 
 const handleDeleteClick = (card) => {
   confirmDeletePopup.open();
-
   confirmDeletePopup.changeHandleSubmit(() => {
     confirmDeletePopup.changeText("deleting...");
-
     api
       .deleteCard(card.getId())
       .then(() => {

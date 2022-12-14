@@ -30,6 +30,7 @@
   z-index: 1;
   border-radius: 10px;
 }
+
 .popup__form {
   margin: auto;
   max-width: 358px;
@@ -52,6 +53,7 @@
   position: relative;
   width: auto;
   display: flex;
+  flex-direction: column;
   padding: 0;
 }
 .popup__image {
@@ -63,6 +65,7 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
+  margin: 0 auto;
 }
 .popup__close {
   background-image: url(../images/Close-Icon.svg);

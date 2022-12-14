@@ -59,7 +59,6 @@ export class Card {
     );
     this._cardLikeButton =
       this._cardElement.querySelector(".card__like-button");
-
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
     this._cardElement.querySelector(".card__title").textContent =
       this._data.name;
@@ -67,8 +66,7 @@ export class Card {
 
     this._renderLikes();
     if (this._userId !== this._ownerId) {
-      this._cardElement.querySelector(".card__trash-button").style.display =
-        "none";
+      this._cardDeleteButton.style.display = "none";
     }
     return this._cardElement;
   };

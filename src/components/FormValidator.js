@@ -27,9 +27,9 @@ class FormValidator {
   }
   _toggleButton = () => {
     if (this._hasValidInputs()) {
-      this._enableButton(this._buttonEl);
+      this._enableButton();
     } else {
-      this.disableButton(this._buttonEl);
+      this.disableButton();
     }
   };
   _showInputError = (input) => {
